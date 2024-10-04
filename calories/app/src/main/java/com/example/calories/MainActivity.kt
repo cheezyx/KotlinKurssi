@@ -152,9 +152,11 @@ fun IntensityList(onClick: (Float) -> Unit) {
                 .width(with(LocalDensity.current) { textFieldSize.width.toDp() })
         ) {
             items.forEach { label ->
-                DropdownMenuItem(onClick = {
+                DropdownMenuItem(text = {
+                    Text(text = label)
+                },
+                        onClick = {
                         selectedText = label
-
                         var intensity: Float = when (label) {
                             "Light" -> 1.3f
                             "Usual" -> 1.5f
@@ -165,9 +167,7 @@ fun IntensityList(onClick: (Float) -> Unit) {
                         }
                         onClick(intensity)
                         expanded = false
-                    }) {
-                    Text(text = label)
-                    }
+                    })
             }
         }
     }
